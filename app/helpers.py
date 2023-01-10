@@ -47,19 +47,6 @@ def find_files_in_dir(dir_path: str, extension: List = None) -> List[str]:
     return [file for file in all_files if any(ext in file for ext in extension)]
 
 
-def prepare_results_multi(data: Iterable[dict]):
-    global levels
-    global objects
-    for result in data:
-        file_id = result.get('id')
-        if not file_id:
-            continue
-        level = result.get('level')
-        result_objects = result.get('objects')
-        levels.append([file_id, level])
-        objects.extend([[file_id, obj] for obj in result_objects])
-
-
 class Timer:
     def __init__(self, task_name='Task'):
         self.start = time.time()
